@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qstech.pierglass.activity.AddMediaActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:popupTheme="@style/AppTheme.PopupOverlay"
+            app:layout_scrollFlags="scroll|enterAlways"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:id="@+id/activity_add_media_image"
+            android:layout_width="112dp"
+            android:layout_height="378dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="@mipmap/ic_launcher"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <TextView
+            android:id="@+id/activity_add_media_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_add_media_image"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="8dp"
+            android:text="select time"/>
+
+        <Button
+            android:id="@+id/activity_add_media_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_add_media_tv"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="16dp"
+            android:text="confirm"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/vMasker"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#e0000000"
+        android:visibility="gone"/>
+
+</android.support.design.widget.CoordinatorLayout>

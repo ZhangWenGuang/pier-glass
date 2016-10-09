@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '24.0.1'
+    defaultConfig {
+        applicationId "com.qstech.pierglass"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:cardview-v7:+'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+    compile 'com.android.support:design:24.2.1'
+    compile project(':MaterialDesign')
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile 'com.bigkoo:pickerview:2.1.1'
+}
