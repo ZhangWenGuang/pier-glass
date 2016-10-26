@@ -3,7 +3,7 @@
           package="com.qstech.pierglass">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".App"
@@ -21,7 +21,9 @@
         </activity>
         <activity android:name=".activity.MediaActivity">
         </activity>
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
+        <activity android:name=".activity.RegisterActivity">
+        </activity>
     </application>
 
 </manifest>

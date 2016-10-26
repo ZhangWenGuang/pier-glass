@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_release"
+        android:icon="@drawable/ic_play_arrow_white"
+        app:showAsAction="always"
+        android:title="release"/>
+    <item
+        android:id="@+id/menu_register"
+        app:showAsAction="never"
+        android:title="register"/>
+    <item
+        android:id="@+id/menu_shutdown"
+        android:icon="@android:drawable/ic_lock_power_off"
+        app:showAsAction="never"
+        android:title="shutdown"/>
+    <item
+        android:id="@+id/menu_reboot"
+        android:icon="@android:drawable/ic_menu_call"
+        app:showAsAction="never"
+        android:title="reboot"/>
+</menu>

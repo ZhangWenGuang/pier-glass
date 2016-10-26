@@ -1,6 +1,7 @@
 package com.qstech.pierglass.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -10,10 +11,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFloat;
 import com.qstech.pierglass.App;
@@ -21,6 +22,7 @@ import com.qstech.pierglass.R;
 import com.qstech.pierglass.adapter.MenuAdapter;
 import com.qstech.pierglass.bean.Media;
 import com.qstech.pierglass.listener.OnItemClickListener;
+import com.qstech.pierglass.utils.FileUtils;
 import com.qstech.pierglass.view.ListViewDecoration;
 import com.yanzhenjie.recyclerview.swipe.Closeable;
 import com.yanzhenjie.recyclerview.swipe.OnSwipeMenuItemClickListener;
@@ -30,6 +32,11 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import com.yanzhenjie.recyclerview.swipe.touch.OnItemMoveListener;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -146,7 +153,7 @@ public class MediaListActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(int position) {
-            Toast.makeText(mContext, "第" + position + "条！", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "第" + position + "条！", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(mContext, MediaActivity.class);
             intent.putExtra("imageUri", mMediaDatas.get(position).getImageUri().toString());
             intent.putExtra("imageTime", mMediaDatas.get(position).getTime());
@@ -164,9 +171,9 @@ public class MediaListActivity extends AppCompatActivity {
             closeable.smoothCloseMenu(); //关闭被点击的菜单。
 
             if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-                Toast.makeText(mContext, "list第" + adapterPosition + "：右侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "list第" + adapterPosition + "：右侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
             } else if (direction == SwipeMenuRecyclerView.LEFT_DIRECTION) {
-                Toast.makeText(mContext, "list第" + adapterPosition + "：左侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "list第" + adapterPosition + "：左侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
             }
 
             // TODO 如果是删除：推荐调用Adapter.notifyItemRemoved(position)，不推荐Adapter.notifyDataSetChanged();
@@ -177,34 +184,77 @@ public class MediaListActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) ;
-        {
-            finish();
-        }
-        return true;
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("-------------", requestCode + "");
+
         if (requestCode == App.MEDIA_ALTER && resultCode == RESULT_OK) {
             Uri imageUri = Uri.parse(data.getStringExtra("imageUri"));
             int imageTime = data.getIntExtra("imageTime", 0);
             int position = data.getIntExtra("position", 0);
             mMediaDatas.get(position).setImageUri(imageUri);
             mMediaDatas.get(position).setTime(imageTime);
-            Log.d("-------------", mMediaDatas.get(position).getTimeString());
+            Log.d("MediaList", "resultTime:" + mMediaDatas.get(position).getTimeString());
             mMenuAdapter.notifyDataSetChanged();
         }
         if (requestCode == App.MEDIA_ADD && resultCode == RESULT_OK) {
             Uri imageUri = Uri.parse(data.getStringExtra("imageUri"));
             int imageTime = data.getIntExtra("imageTime", 0);
             Media media = new Media(imageTime, imageUri);
-            Log.d("-------------", media.getTimeString());
+            Log.d("MediaList", "resultTime:" + media.getTimeString());
             mMediaDatas.add(media);
             mMenuAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menu_register:
+                Intent intent = new Intent(mContext, RegisterActivity.class);
+                startActivityForResult(intent, 123);
+                break;
+            case R.id.menu_release:
+                FileOutputStream out = null;
+                BufferedWriter writer = null;
+
+                try {
+                    out = openFileOutput("data", Context.MODE_PRIVATE);
+                    writer = new BufferedWriter(new OutputStreamWriter(out));
+                    writer.write(FileUtils.MediaListToFile(mMediaDatas));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (writer != null) {
+                            writer.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case android.R.id.home:
+                finish();
+            default:
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("MediaList","onPause");
+        super.onPause();
     }
 }

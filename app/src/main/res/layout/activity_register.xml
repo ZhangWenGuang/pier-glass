@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F4F4F4"
+              android:orientation="vertical"
+              android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="6dp"
+            android:paddingTop="12dp"
+            android:text="NOC ACCOUNT"
+            android:textColor="#3A3A3A"
+            android:textSize="14sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ly_noc_user"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/corners_top_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="NOC User:"
+                    android:textColor="#6F6F6F"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:padding="4dp"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:maxLength="15"
+                    android:lines="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_noc_pas"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/ly_noc_user"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/corners_bottom_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Password:"
+                    android:textColor="#6F6F6F"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:inputType="textPassword"
+                    android:lines="1"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <!--led-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="6dp"
+            android:paddingTop="24dp"
+            android:text="PLAYER INFO"
+            android:textColor="#3A3A3A"
+            android:textSize="14sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/ly_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/corners_top_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Player Name: "
+                    android:textColor="#6F6F6F"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:lines="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_player_resolution"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/ly_player_name"
+                android:layout_marginTop="2dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Resolution:"
+                    android:textColor="#6F6F6F"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:inputType="number"
+                    android:maxLength="4"/>
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="X"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:inputType="number"
+                    android:maxLength="4"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_player_address"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/ly_player_resolution"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/corners_bottom_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Address:"
+                    android:textColor="#6F6F6F"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:textColor="#6F6F6F"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="12sp"
+                    android:lines="1"
+                    android:id="@+id/editText2"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_register_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"/>
+</LinearLayout>
