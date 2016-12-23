@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFloat;
 import com.qstech.pierglass.App;
@@ -227,9 +228,14 @@ public class MediaListActivity extends AppCompatActivity {
                 BufferedWriter writer = null;
 
                 try {
-                    out = openFileOutput("data", Context.MODE_PRIVATE);
-                    writer = new BufferedWriter(new OutputStreamWriter(out));
-                    writer.write(FileUtils.MediaListToFile(mMediaDatas));
+                    if (mMediaDatas.size() > 0){
+                        out = openFileOutput("play001.lst", Context.MODE_PRIVATE);
+                        writer = new BufferedWriter(new OutputStreamWriter(out));
+                        writer.write(FileUtils.MediaListToFile(mMediaDatas));
+                    } else {
+                        Toast.makeText(this, "list is null!", Toast.LENGTH_SHORT).show();
+                    }
+                    
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -238,6 +244,9 @@ public class MediaListActivity extends AppCompatActivity {
                     try {
                         if (writer != null) {
                             writer.close();
+                        }
+                        if (out != null) {
+                            out.close();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
