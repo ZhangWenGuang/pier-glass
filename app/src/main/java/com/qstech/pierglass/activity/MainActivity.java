@@ -11,7 +11,8 @@ import com.qstech.pierglass.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mButton;
+    private Button mListButton;
+    private Button mFindWifiButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +21,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mButton = (Button) findViewById(R.id.test);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mListButton = (Button) findViewById(R.id.btn_main_list);
+        mListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, MediaListActivity.class));
+            }
+        });
+
+        mFindWifiButton = (Button) findViewById(R.id.btn_main_find_wifi);
+        mFindWifiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FindWifiActivity.class));
             }
         });
     }
