@@ -20,6 +20,11 @@ import java.util.List;
  */
 public class MenuAdapter extends SwipeMenuAdapter<MenuAdapter.DefaultViewHolder> {
 
+    public static final int VIEW_TYPE_MENU_NONE = 1;
+    public static final int VIEW_TYPE_MENU_SINGLE = 2;
+    public static final int VIEW_TYPE_MENU_MULTI = 3;
+    public static final int VIEW_TYPE_MENU_LEFT = 4;
+
     private List<Media> medias;
 
     private OnItemClickListener mOnItemClickListener;
@@ -36,6 +41,11 @@ public class MenuAdapter extends SwipeMenuAdapter<MenuAdapter.DefaultViewHolder>
     public void onBindViewHolder(MenuAdapter.DefaultViewHolder holder, int position) {
         holder.setData(medias.get(position));
         holder.setOnItemClickListener(mOnItemClickListener);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return medias.get(position).getViewType();
     }
 
     @Override
@@ -71,9 +81,15 @@ public class MenuAdapter extends SwipeMenuAdapter<MenuAdapter.DefaultViewHolder>
         }
 
         public void setData(Media media) {
-            this.tvTitle.setText(media.getTimeString());
-            //this.iv_icon.setImageURI(media.getImageUri());//内存消耗过大，需要进行图片缩小显示
-            this.iv_icon.setImageBitmap(BitmapUtils.getSmallBitmap(media.getImageUri()));
+            if (media.getTime() == -1) {
+                //使用的是系统资源文件不能压缩，这里是添加按钮图片
+                this.tvTitle.setText("");
+                this.iv_icon.setImageURI(media.getImageUri());
+            } else {
+                this.tvTitle.setText(media.getTimeString());
+                //this.iv_icon.setImageURI(media.getImageUri());//内存消耗过大，需要进行图片缩小显示
+                this.iv_icon.setImageBitmap(BitmapUtils.getSmallBitmap(media.getImageUri()));
+            }
         }
 
         @Override

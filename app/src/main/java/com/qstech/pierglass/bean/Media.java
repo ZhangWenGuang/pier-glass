@@ -12,10 +12,20 @@ import com.qstech.pierglass.utils.TimeUtils;
 public class Media {
     private int time;
     private Uri imageUri;
+    private int viewType;
 
-    public Media(int time, Uri imageUri) {
+    public Media(int time, Uri imageUri, int viewType) {
         this.time = time;
         this.imageUri = imageUri;
+        this.viewType = viewType;
+    }
+
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
     }
 
     public int getTime() {
@@ -36,5 +46,18 @@ public class Media {
 
     public void setImageUri(Uri imageUri) {
         this.imageUri = imageUri;
+    }
+
+    /**
+     *
+     * @param time 时间长度
+     * @param imageUri 图片路径
+     * @param viewType 菜单类型
+     */
+
+    public void setAll(int time, Uri imageUri, int viewType) {
+        this.time = time;
+        this.imageUri = imageUri;
+        this.viewType = viewType;
     }
 }

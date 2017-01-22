@@ -6,13 +6,14 @@
               android:background="?selectableItemBackground"
               android:gravity="center_horizontal"
               android:orientation="vertical"
-              android:padding="5dp">
+              android:padding="1dp">
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="@dimen/item_width"
-        android:layout_height="@dimen/item_height"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/tv_title"

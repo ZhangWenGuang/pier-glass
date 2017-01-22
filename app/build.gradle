@@ -28,6 +28,8 @@ dependencies {
     compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
     compile 'com.android.support:design:24.2.1'
     compile project(':MaterialDesign')
+    /*crop 图片裁剪 */
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    /*时间选择器*/
     compile 'com.bigkoo:pickerview:2.1.1'
 }
